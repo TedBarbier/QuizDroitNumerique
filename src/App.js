@@ -1,5 +1,7 @@
+// src/App.js
 import React, { useState, useEffect } from 'react';
 import Question from './components/Question';
+import Footer from './components/Footer'; // Import Footer component
 import originalQuestionsData from './questionsData'; // Import original questions data
 
 // Helper function to shuffle array in place (Fisher-Yates Shuffle) -  Move this to App.js as it's used only here now
@@ -105,6 +107,7 @@ function App() {
                     />
                 </>
             )}
+            <Footer /> {/* Include the Footer component here */}
         </div>
     );
 }
