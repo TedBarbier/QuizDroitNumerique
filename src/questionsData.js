@@ -1,18 +1,5 @@
 const questionsData = [
     {
-        category: "Cloud Souverain et Données",
-        scenario: "Innovatech Solutions développe un nouveau logiciel d'IA pour le diagnostic médical. Ils envisagent d'utiliser des services cloud pour stocker les données des patients et exécuter leurs algorithmes.",
-        question: "Quel type de déploiement cloud serait le plus conforme aux principes de 'Cloud Souverain' et aux exigences légales françaises pour les données sensibles comme les informations médicales ?",
-        options: [
-            "Cloud Public",
-            "Cloud Privé",
-            "Cloud Hybride",
-            "Cloud Souverain"
-        ],
-        correctAnswer: "Cloud Souverain",
-        explanation: "Un Cloud Souverain garantit que les données sont hébergées et traitées sur le territoire national et en vertu du droit français, ce qui est crucial pour les données sensibles, comme souligné dans le matériel de cours."
-    },
-    {
         category: "Protection des Logiciels",
         scenario: "Innovatech Solutions souhaite protéger le code source de son nouveau logiciel contre la copie et la distribution non autorisées.",
         question: "Quel principal mécanisme juridique en France protège le code source d'un logiciel ?",
@@ -208,19 +195,6 @@ const questionsData = [
         explanation: "Un ransomware est un logiciel malveillant qui chiffre les données d'un système et exige une rançon en échange de la clé de déchiffrement, bloquant ainsi l'accès aux informations."
     },
     {
-        category: "Cybersécurité",
-        scenario: "Innovatech Solutions met en place des mesures de sécurité pour protéger son réseau informatique.",
-        question: "Parmi les mesures suivantes, laquelle relève de la 'sécurité informatique' et vise à protéger les infrastructures et les données ?",
-        options: [
-            "Cloud Souverain",
-            "Droit d'auteur",
-            "Cybersécurité",
-            "Sécurité du réseau"
-        ],
-        correctAnswer: "Sécurité du réseau",
-        explanation: "La sécurité du réseau englobe l'ensemble des mesures techniques et organisationnelles visant à protéger les infrastructures informatiques (réseaux, serveurs, postes de travail) et les données contre les menaces."
-    },
-    {
         category: "Droit à l'image et Vie Privée",
         scenario: "Un employé d'Innovatech Solutions est photographié à son insu lors d'une pause déjeuner dans un lieu public. La photo est ensuite diffusée sur les réseaux sociaux sans son consentement.",
         question: "Selon le droit français, quel droit fondamental de l'employé est potentiellement violé par la diffusion de cette photo sans son autorisation ?",
@@ -338,19 +312,6 @@ const questionsData = [
         explanation: "Les licences libres offrent un accès au code source et autorisent sa modification et sa redistribution, ce qui favorise la collaboration, le partage et l'innovation ouverte."
     },
     {
-        category: "Open Innovation",
-        scenario: "Innovatech Solutions participe à un hackathon pour développer de nouvelles fonctionnalités pour son logiciel.",
-        question: "Le hackathon est un exemple de quelle stratégie d'open innovation, visant à stimuler la créativité et l'innovation collaborative ?",
-        options: [
-            "Intrapreneuriat",
-            "Crowdfunding",
-            "Hackathon",
-            "Licence Libre"
-        ],
-        correctAnswer: "Hackathon",
-        explanation: "Le hackathon est une méthode d'open innovation qui consiste à organiser un événement collaboratif intensif pour développer rapidement des solutions innovantes, souvent autour d'un défi ou d'une problématique."
-    },
-    {
         category: "Droit d'Auteur des Logiciels",
         scenario: "Un développeur salarié d'Innovatech Solutions crée un logiciel dans le cadre de ses fonctions.",
         question: "A qui appartiennent les droits patrimoniaux (droits d'exploitation) sur ce logiciel, créé par un salarié dans l'exercice de ses fonctions ?",
@@ -453,6 +414,253 @@ const questionsData = [
         ],
         correctAnswer: "Complexifier l'attribution de responsabilité en cas de dommage",
         explanation: "L'autonomie croissante des systèmes d'IA complexifie l'attribution de responsabilité en cas de dommage, car il peut être difficile de déterminer qui est responsable (concepteur, utilisateur, IA elle-même)."
+    },
+    {
+        category: "Responsabilité du Prestataire Informatique - Limites de l'Obligation d'Information",
+        scenario: "Innovatech Solutions, prestataire informatique, est poursuivi par un client pour défaut d'information. Le client était un expert en informatique et avait rédigé un cahier des charges très précis.",
+        question: "Dans ce contexte, comment le niveau d'expertise du client et la présence d'un cahier des charges précis peuvent-ils impacter l'étendue de l'obligation d'information d'Innovatech Solutions ?",
+        options: [
+            "L'obligation d'information du prestataire est renforcée.",
+            "L'obligation d'information du prestataire est inchangée.",
+            "L'obligation d'information du prestataire peut être atténuée, voire limitée.",
+            "L'obligation d'information devient une obligation de résultat."
+        ],
+        correctAnswer: "L'obligation d'information du prestataire peut être atténuée, voire limitée.",
+        explanation: "L'expertise du client et un cahier des charges précis indiquent une capacité du client à comprendre ses besoins et les aspects techniques, ce qui peut atténuer l'obligation d'information du prestataire, qui reste une obligation de moyens, comme vu dans 'Les limites de l’obligation d’information'."
+    },
+    {
+        category: "Sanctions pour Défaut d'Information",
+        scenario: "Innovatech Solutions manque à son obligation d'information précontractuelle envers un client. Le contrat est signé, mais des problèmes surviennent lors de l'exécution.",
+        question: "Quelle est la principale sanction encourue par Innovatech Solutions pour ce défaut d'information précontractuelle, une fois le contrat conclu et en phase d'exécution ?",
+        options: [
+            "Nullité du contrat pour vice du consentement.",
+            "Responsabilité délictuelle du prestataire.",
+            "Responsabilité contractuelle du prestataire.",
+            "Responsabilité pénale pour tromperie."
+        ],
+        correctAnswer: "Responsabilité contractuelle du prestataire.",
+        explanation: "Bien que le défaut d'information ait lieu en phase précontractuelle, la jurisprudence tend à engager la responsabilité contractuelle du prestataire une fois le contrat conclu, si ce défaut affecte l'exécution, comme expliqué dans 'Les sanctions pour défaut d’information'."
+    },
+    {
+        category: "Droit d'Auteur des Logiciels - Originalité",
+        scenario: "Innovatech Solutions développe un logiciel de gestion de base de données. Il utilise des algorithmes standards et des interfaces utilisateur classiques.",
+        question: "Selon la jurisprudence Pachot, le logiciel d'Innovatech Solutions sera-t-il automatiquement protégé par le droit d'auteur, même en utilisant des éléments standards ?",
+        options: [
+            "Oui, tout logiciel est protégé par le droit d'auteur.",
+            "Non, l'originalité est une condition nécessaire à la protection par le droit d'auteur.",
+            "Oui, si le logiciel est déposé auprès de l'APP.",
+            "Non, car les bases de données ont un régime de protection spécifique."
+        ],
+        correctAnswer: "Non, l'originalité est une condition nécessaire à la protection par le droit d'auteur.",
+        explanation: "La jurisprudence Pachot précise que l'originalité d'un logiciel réside dans un effort personnalisé allant au-delà de la simple mise en œuvre d'une logique automatique et contraignante. Un logiciel utilisant des éléments standards pourrait manquer d'originalité et donc de protection par le droit d'auteur, comme vu dans 'Les conditions de la protection'."
+    },
+    {
+        category: "Droit d'Auteur des Logiciels - Objet de la Protection",
+        scenario: "Innovatech Solutions a une idée révolutionnaire pour un nouveau logiciel de réseau social. Ils souhaitent protéger cette idée avant même de développer le code.",
+        question: "Le droit d'auteur sur les logiciels protège-t-il l'idée à la base du logiciel, ou uniquement la forme concrète que prend cette idée ?",
+        options: [
+            "Le droit d'auteur protège l'idée et sa mise en forme.",
+            "Le droit d'auteur protège uniquement l'idée révolutionnaire.",
+            "Le droit d'auteur protège uniquement la mise en forme du logiciel (code source, etc.).",
+            "L'idée peut être protégée par brevet, mais pas par droit d'auteur."
+        ],
+        correctAnswer: "Le droit d'auteur protège uniquement la mise en forme du logiciel (code source, etc.).",
+        explanation: "Le droit d'auteur ne protège pas les idées en tant que telles, mais uniquement l'expression de ces idées, c'est-à-dire la mise en forme concrète du logiciel (code source, interfaces, etc.), comme expliqué dans 'L’objet de la protection'."
+    },
+    {
+        category: "Droit d'Auteur des Logiciels - Droits Moraux",
+        scenario: "Un développeur salarié d'Innovatech Solutions crée un logiciel. L'entreprise souhaite modifier ce logiciel sans mentionner le nom du développeur.",
+        question: "Innovatech Solutions peut-il légalement modifier le logiciel sans citer le nom du développeur, au regard des droits moraux de l'auteur ?",
+        options: [
+            "Oui, l'employeur a tous les droits sur le logiciel.",
+            "Non, le droit moral au nom du développeur doit être respecté.",
+            "Oui, si le contrat de travail le prévoit.",
+            "Non, le développeur conserve tous les droits moraux et patrimoniaux."
+        ],
+        correctAnswer: "Non, le droit moral au nom du développeur doit être respecté.",
+        explanation: "Bien que les droits patrimoniaux soient dévolus à l'employeur, le développeur salarié conserve ses droits moraux, notamment le droit au nom, qui impose de citer son nom comme auteur du logiciel, comme vu dans 'Les droits moraux'."
+    },
+    {
+        category: "Droit d'Auteur des Logiciels - Brevetabilité en Europe",
+        scenario: "Innovatech Solutions a développé un algorithme logiciel qui améliore significativement l'efficacité énergétique des serveurs.",
+        question: "Cette invention logicielle, apportant une contribution technique concrète, pourrait-elle être brevetée en Europe, malgré l'exclusion des logiciels de la brevetabilité ?",
+        options: [
+            "Non, les logiciels ne sont jamais brevetables en Europe.",
+            "Oui, si elle apporte une contribution technique et remplit les critères de brevetabilité.",
+            "Oui, car l'efficacité énergétique est un critère de brevetabilité spécifique.",
+            "Non, car elle concerne le domaine de l'informatique."
+        ],
+        correctAnswer: "Oui, si elle apporte une contribution technique et remplit les critères de brevetabilité.",
+        explanation: "En Europe, bien que les logiciels 'en tant que tels' soient exclus, une invention logicielle apportant une 'contribution technique' à l'état de la technique, comme une amélioration de l'efficacité énergétique, peut être brevetable si elle remplit les autres critères (nouveauté, activité inventive, application industrielle), comme expliqué dans 'La brevetabilité du logiciel'."
+    },
+    {
+        category: "Cybercriminalité - Atteintes aux Systèmes",
+        scenario: "Un ancien employé d'Innovatech Solutions, sans autorisation, accède au système informatique de l'entreprise pour consulter d'anciens emails.",
+        question: "Quel type d'infraction de cybercriminalité cet ancien employé commet-il principalement, au regard des atteintes aux systèmes de traitement automatisé de données ?",
+        options: [
+            "Atteinte à l'intégrité des données.",
+            "Entrave au fonctionnement du système.",
+            "Accès et maintien frauduleux dans un STAD.",
+            "Introduction frauduleuse de données."
+        ],
+        correctAnswer: "Accès et maintien frauduleux dans un STAD.",
+        explanation: "L'accès et le maintien frauduleux dans un Système de Traitement Automatisé de Données (STAD) sans autorisation constituent l'infraction principale dans ce cas, même sans altération ou intention de nuire, comme vu dans 'Les atteintes aux systèmes'."
+    },
+    {
+        category: "Cybercriminalité - Atteintes aux Données",
+        scenario: "Un concurrent d'Innovatech Solutions pirate le système informatique de l'entreprise et supprime des fichiers de données clients importants.",
+        question: "Quel type d'infraction de cybercriminalité ce concurrent commet-il principalement, au regard des atteintes aux données ?",
+        options: [
+            "Accès et maintien frauduleux.",
+            "Entrave au fonctionnement du système.",
+            "Suppression ou modification frauduleuse de données.",
+            "Collecte illégale de données personnelles."
+        ],
+        correctAnswer: "Suppression ou modification frauduleuse de données.",
+        explanation: "La suppression frauduleuse de données contenues dans un système informatique constitue une infraction spécifique de cybercriminalité, distincte de l'accès frauduleux, comme vu dans 'Atteintes volontaires aux données indépendamment de l’accès ou du maintien frauduleux'."
+    },
+    {
+        category: "Cybercriminalité - Responsabilité Pénale",
+        scenario: "Un employé d'Innovatech Solutions est reconnu coupable d'accès frauduleux au système informatique de l'entreprise.",
+        question: "Outre l'emprisonnement et l'amende, quelles peines complémentaires cet employé peut-il également encourir, selon le Code pénal ?",
+        options: [
+            "Uniquement une interdiction d'exercer une fonction publique.",
+            "Uniquement une confiscation du matériel utilisé.",
+            "Des peines complémentaires variées, incluant interdiction de droits civiques, fermeture d'établissement, etc.",
+            "Aucune peine complémentaire en matière de cybercriminalité."
+        ],
+        correctAnswer: "Des peines complémentaires variées, incluant interdiction de droits civiques, fermeture d'établissement, etc.",
+        explanation: "Le Code pénal prévoit un large éventail de peines complémentaires pour les infractions de cybercriminalité, allant de l'interdiction de droits civiques à la fermeture d'établissements, comme détaillé dans 'Atteintes volontaires aux données indépendamment de l’accès ou du maintien frauduleux'."
+    },
+    {
+        category: "Blockchain - Définition et Fonctionnement",
+        scenario: "Innovatech Solutions s'intéresse à la technologie blockchain pour sécuriser des transactions.",
+        question: "Quelle est la caractéristique principale de la blockchain qui assure la sécurité et l'intégrité des transactions enregistrées ?",
+        options: [
+            "La centralisation des données dans un serveur unique.",
+            "Le cryptage des données et la validation distribuée des transactions.",
+            "L'anonymat complet des utilisateurs.",
+            "La rapidité des transactions, sans vérification."
+        ],
+        correctAnswer: "Le cryptage des données et la validation distribuée des transactions.",
+        explanation: "La blockchain repose sur la cryptographie pour sécuriser les données et un mécanisme de validation distribuée des transactions par les utilisateurs du réseau (mineurs), garantissant ainsi l'intégrité et la sécurité, comme expliqué dans 'Définition et explication'."
+    },
+    {
+        category: "Blockchain - Applications",
+        scenario: "Innovatech Solutions souhaite utiliser la blockchain au-delà des cryptomonnaies, par exemple pour la traçabilité de produits.",
+        question: "Parmi les applications suivantes de la blockchain, laquelle correspond à une utilisation en tant que registre pour améliorer la traçabilité ?",
+        options: [
+            "Transfert de bitcoins.",
+            "Création de smart contracts.",
+            "Certification de diplômes.",
+            "Suivi de la chaîne d'approvisionnement."
+        ],
+        correctAnswer: "Suivi de la chaîne d'approvisionnement.",
+        explanation: "L'utilisation de la blockchain comme registre permet d'assurer une meilleure traçabilité des produits en enregistrant de manière immuable et transparente toutes les étapes de la chaîne d'approvisionnement, comme vu dans 'Le potentiel de la Blockchain'."
+    },
+    {
+        category: "Blockchain - Smart Contracts",
+        scenario: "Innovatech Solutions développe des 'smart contracts' basés sur la blockchain.",
+        question: "Quelle est la caractéristique principale des 'smart contracts' qui les distingue des contrats traditionnels ?",
+        options: [
+            "Ils sont rédigés en langage juridique complexe.",
+            "Ils s'exécutent automatiquement lorsque les conditions sont remplies, sans intervention humaine.",
+            "Ils nécessitent l'intervention d'un notaire pour être valides.",
+            "Ils ne sont pas opposables devant les tribunaux."
+        ],
+        correctAnswer: "Ils s'exécutent automatiquement lorsque les conditions sont remplies, sans intervention humaine.",
+        explanation: "Les smart contracts sont des programmes informatiques autonomes qui exécutent automatiquement les termes d'un contrat une fois que les conditions prédéfinies sont remplies, sans nécessiter d'intervention humaine, comme expliqué dans 'Le potentiel de la Blockchain'."
+    },
+    {
+        category: "Preuve Electronique - Recevabilité",
+        scenario: "Innovatech Solutions produit en justice des captures d'écran de messages diffamatoires publiés sur un réseau social par un concurrent.",
+        question: "Le juge doit-il automatiquement accepter ces captures d'écran comme preuve, ou peut-il en apprécier la recevabilité et la force probante ?",
+        options: [
+            "Le juge doit automatiquement accepter les captures d'écran.",
+            "Le juge peut refuser les captures d'écran comme preuve.",
+            "Le juge apprécie souverainement la recevabilité et la force probante des captures d'écran.",
+            "Seules les captures d'écran certifiées par un expert sont recevables."
+        ],
+        correctAnswer: "Le juge apprécie souverainement la recevabilité et la force probante des captures d'écran.",
+        explanation: "En matière de preuve électronique, le juge conserve un pouvoir souverain d'appréciation de la recevabilité et de la force probante des éléments produits, tels que des captures d'écran, en tenant compte du contexte et des principes de loyauté et de fiabilité, comme vu dans 'La recevabilité des modes de preuve'."
+    },
+    {
+        category: "Signature Electronique - Conditions de Fiabilité",
+        scenario: "Innovatech Solutions utilise une signature électronique simple pour valider des documents internes.",
+        question: "Une signature électronique simple bénéficie-t-elle de la même présomption de fiabilité qu'une signature électronique qualifiée, au sens du droit français ?",
+        options: [
+            "Oui, toutes les signatures électroniques ont la même valeur juridique.",
+            "Non, seule la signature électronique qualifiée bénéficie d'une présomption de fiabilité.",
+            "Oui, si elle est apposée par un dirigeant de l'entreprise.",
+            "Non, la signature simple n'a aucune valeur juridique."
+        ],
+        correctAnswer: "Non, seule la signature électronique qualifiée bénéficie d'une présomption de fiabilité.",
+        explanation: "Seule la signature électronique qualifiée, qui repose sur un certificat qualifié et un dispositif sécurisé de création de signature, bénéficie d'une présomption de fiabilité en droit français. La signature simple est recevable comme preuve, mais sa fiabilité doit être prouvée, comme expliqué dans 'Les conditions de fiabilité de la signature électronique'."
+    },
+    {
+        category: "Archivage Numérique - Valeur Juridique",
+        scenario: "Innovatech Solutions souhaite archiver numériquement ses contrats clients pour des raisons de simplification et d'économies.",
+        question: "L'archivage électronique de documents, réalisé dans les règles de l'art, permet-il de conserver la même valeur juridique que l'archivage papier, notamment en cas de contrôle ou de litige ?",
+        options: [
+            "Non, seuls les documents papier ont une valeur juridique.",
+            "Oui, l'archivage électronique a la même valeur juridique que l'archivage papier sous conditions.",
+            "Non, l'archivage électronique n'est pas reconnu par la loi française.",
+            "Oui, systématiquement et sans conditions."
+        ],
+        correctAnswer: "Oui, l'archivage électronique a la même valeur juridique que l'archivage papier sous conditions.",
+        explanation: "L'archivage électronique, réalisé dans le respect des normes et des conditions de sécurité et de fiabilité, permet de conférer aux documents numériques la même valeur juridique que les originaux papier, notamment en termes de preuve, comme vu dans 'L’archivage numérique'."
+    },
+    {
+        category: "Open Innovation - Modèles Economiques",
+        scenario: "Innovatech Solutions souhaite adopter un modèle économique 'freemium' pour son nouveau logiciel.",
+        question: "Quel est le principe du modèle économique 'freemium' dans le contexte de l'open innovation et des logiciels ?",
+        options: [
+            "Logiciel entièrement gratuit et open source.",
+            "Logiciel payant avec code source fermé.",
+            "Logiciel avec une version de base gratuite et des fonctionnalités avancées payantes.",
+            "Logiciel dont le prix est libre et déterminé par l'utilisateur."
+        ],
+        correctAnswer: "Logiciel avec une version de base gratuite et des fonctionnalités avancées payantes.",
+        explanation: "Le modèle 'freemium' consiste à proposer une version de base d'un logiciel ou d'un service gratuitement, afin d'attirer un large public, et à monétiser des fonctionnalités avancées ou des services complémentaires payants, comme vu dans 'Les modèles économiques'."
+    },
+    {
+        category: "Open Innovation - Défis Juridiques",
+        scenario: "Innovatech Solutions hésite à s'engager dans l'open innovation, craignant un manque de sécurité juridique pour ses innovations.",
+        question: "L'open innovation implique-t-elle nécessairement un manque de sécurité juridique pour les entreprises, notamment en matière de propriété intellectuelle ?",
+        options: [
+            "Oui, l'open innovation est incompatible avec la propriété intellectuelle.",
+            "Non, l'open innovation peut être encadrée juridiquement, notamment par les licences libres et ouvertes.",
+            "Oui, car le partage des innovations rend leur protection impossible.",
+            "Non, la sécurité juridique est renforcée en open innovation."
+        ],
+        correctAnswer: "Non, l'open innovation peut être encadrée juridiquement, notamment par les licences libres et ouvertes.",
+        explanation: "Contrairement à une idée reçue, l'open innovation n'implique pas un manque de sécurité juridique. Les licences libres et ouvertes offrent un cadre juridique adapté pour encadrer le partage et la collaboration, tout en protégeant les droits des créateurs, comme vu dans 'Aspects juridiques de l’open innovation'."
+    },
+    {
+        category: "Droit à l'Image - Personnes Publiques",
+        scenario: "Un magazine people publie des photos d'un dirigeant d'Innovatech Solutions en vacances à la plage, sans son autorisation.",
+        question: "Le droit à l'image du dirigeant est-il automatiquement limité du fait de sa notoriété publique, justifiant la publication de ces photos sans son consentement ?",
+        options: [
+            "Oui, les personnes publiques n'ont pas de droit à l'image.",
+            "Non, les personnes publiques conservent un droit à l'image, mais avec des limites.",
+            "Oui, si les photos sont prises dans un lieu public.",
+            "Non, le droit à l'image est absolu pour tous."
+        ],
+        correctAnswer: "Non, les personnes publiques conservent un droit à l'image, mais avec des limites.",
+        explanation: "Même les personnes publiques conservent un droit à l'image et au respect de leur vie privée. Cependant, ce droit est limité par le droit à l'information du public. La jurisprudence recherche un équilibre entre ces droits, comme vu dans 'Le droit à l’image'."
+    },
+    {
+        category: "Droit à l'Image - Information Légitime",
+        scenario: "Un journal publie une photo d'un employé d'Innovatech Solutions arrêté par la police dans le cadre d'une enquête pour fraude.",
+        question: "La publication de cette photo, sans le consentement de l'employé, peut-elle être justifiée au nom du droit à l'information légitime du public ?",
+        options: [
+            "Non, la vie privée prime toujours.",
+            "Oui, si l'arrestation est d'intérêt public et la photo illustre l'information.",
+            "Non, car il s'agit d'une affaire judiciaire.",
+            "Oui, car l'employé a commis une infraction."
+        ],
+        correctAnswer: "Oui, si l'arrestation est d'intérêt public et la photo illustre l'information.",
+        explanation: "Le droit à l'image peut être limité au nom du droit à l'information légitime du public. La publication d'une photo illustrant une information d'intérêt public, comme une arrestation dans une affaire de fraude, peut être justifiée, sous certaines conditions d'équilibre et de proportionnalité, comme vu dans 'Le droit à l’image'."
     }
 ];
 
