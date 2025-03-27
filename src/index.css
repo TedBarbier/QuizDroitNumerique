@@ -125,3 +125,56 @@ button[type="submit"]:disabled {
 .results button:hover {
     background-color: #1e7e34;
 }
+
+.results-review {
+    margin-top: 20px;
+}
+
+.result-question-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.result-question-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.result-question-card .scenario {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.result-question-card .question-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.result-question-card .explanation {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.result-feedback {
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.result-feedback.correct {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.result-feedback.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

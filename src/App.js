@@ -42,6 +42,23 @@ function App() {
                 <div className="results">
                     <h2>Résultats du Quiz</h2>
                     <p>Votre Score : {score} sur {questionsData.length}</p>
+                    <div className="results-review">
+                        {questionsData.map((question, index) => (
+                            <div key={index} className="result-question-card">
+                                <h3>Question {index + 1}</h3>
+                                <p className="scenario">{question.scenario}</p>
+                                <p className="question-text">{question.question}</p>
+                                <p>Votre réponse: <strong>{userAnswers[index] || "Non répondu"}</strong></p>
+                                <p>Réponse correcte: <strong>{question.correctAnswer}</strong></p>
+                                <p className="explanation">Explication: {question.explanation}</p>
+                                {userAnswers[index] === question.correctAnswer ? (
+                                    <p className="result-feedback correct">Correct 🎉</p>
+                                ) : (
+                                    <p className="result-feedback incorrect">Incorrect 😔</p>
+                                )}
+                            </div>
+                        ))}
+                    </div>
                     <button onClick={handleRestartQuiz}>Recommencer le Quiz</button>
                 </div>
             ) : (
