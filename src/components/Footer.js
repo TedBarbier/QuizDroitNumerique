@@ -4,9 +4,10 @@ import React from 'react';
 function Footer() {
     return (
         <footer className="app-footer">
-            <p>© {new Date().getFullYear()} Aurélie Joubert. Tous droits réservés.</p>
+            <p>© {new Date().getFullYear()} Aurélie Joubert.  Matériel de cours : Tous droits réservés.</p>
+            <p>Partiel d'entraînement développé par Ted Barbier.</p>
             <p>
-                Projet disponible sur <a href="https://github.com/TedBarbier/QuizDroitNumerique/" target="_blank" rel="noopener noreferrer">GitHub</a>
+                Code source disponible sur <a href="https://github.com/TedBarbier/QuizDroitNumerique/" target="_blank" rel="noopener noreferrer">GitHub</a>
             </p>
         </footer>
     );
