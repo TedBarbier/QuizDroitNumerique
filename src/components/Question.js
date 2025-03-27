@@ -24,7 +24,7 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
         // Find and store the index of the correct answer in the ORIGINAL options array
         correctAnswerIndexRef.current = questionData.options.indexOf(questionData.correctAnswer);
 
-    }, [questionIndex, questionData.options]); // Run effect when questionIndex or questionData.options changes
+    }, [questionIndex, questionData.options, questionData.correctAnswer]); // Run effect when questionIndex or questionData.options changes
 
 
     const handleOptionChange = (e) => {
