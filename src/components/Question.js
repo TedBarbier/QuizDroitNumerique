@@ -12,7 +12,7 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
         if (selectedOption !== null) {
             onAnswerSubmit(selectedOption);
         } else {
-            alert("Please select an answer.");
+            alert("Veuillez sélectionner une réponse.");
         }
     };
 
@@ -38,13 +38,13 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                         </li>
                     ))}
                 </ul>
-                <button type="submit" disabled={selectedOption === null}>Submit Answer</button>
+                <button type="submit" disabled={selectedOption === null}>Soumettre la réponse</button>
                 {userAnswer !== null && ( // Show feedback if an answer has been submitted
                     <div className={selectedOption === questionData.correctAnswer ? "feedback correct" : "feedback incorrect"}>
                         {selectedOption === questionData.correctAnswer ? (
-                            <p>Correct! 🎉 {questionData.explanation}</p>
+                            <p>Correct ! 🎉 {questionData.explanation}</p>
                         ) : (
-                            <p>Incorrect. 😔 The correct answer is: <strong>{questionData.correctAnswer}</strong>. {questionData.explanation}</p>
+                            <p>Incorrect. 😔 La bonne réponse est : <strong>{questionData.correctAnswer}</strong>. {questionData.explanation}</p>
                         )}
                     </div>
                 )}

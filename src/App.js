@@ -36,20 +36,20 @@ function App() {
 
     return (
         <div className="app">
-            <h1>Droit du Numérique - Training Partial</h1>
+            <h1>Droit du Numérique - Partiel d'Entraînement</h1>
 
             {showResults ? (
                 <div className="results">
-                    <h2>Quiz Results</h2>
-                    <p>Your Score: {score} out of {questionsData.length}</p>
-                    <button onClick={handleRestartQuiz}>Restart Quiz</button>
+                    <h2>Résultats du Quiz</h2>
+                    <p>Votre Score : {score} sur {questionsData.length}</p>
+                    <button onClick={handleRestartQuiz}>Recommencer le Quiz</button>
                 </div>
             ) : (
                 <>
                     <p className="scenario-intro">
-                        Welcome to the Innovatech Solutions Digital Law Training Quiz! <br/>
-                        Innovatech Solutions, a dynamic tech company, is facing various legal scenarios in the digital world. <br/>
-                        Answer the questions to test your knowledge of "Droit du Numérique" and help Innovatech navigate these challenges!
+                        Bienvenue au partiel d'entraînement en Droit du Numérique d'Innovatech Solutions ! <br/>
+                        Innovatech Solutions, une entreprise technologique dynamique, est confrontée à divers scénarios juridiques dans le monde numérique. <br/>
+                        Répondez aux questions pour tester vos connaissances en "Droit du Numérique" et aider Innovatech à relever ces défis !
                     </p>
                     <Question
                         questionData={currentQuestion}
