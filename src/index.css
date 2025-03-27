@@ -178,3 +178,24 @@ button[type="submit"]:disabled {
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+
+
+.question-buttons {
+    display: flex; /* Use flexbox to arrange buttons horizontally */
+    justify-content: space-between; /* Space them out */
+    margin-top: 10px; /* Add some space above the buttons */
+}
+
+.question-buttons button {
+    margin-right: 5px; /* Add some space between buttons */
+    margin-left: 5px;
+}
+
+.skip-button {
+    background-color: #ffc107; /* Example color for skip button */
+    color: #333; /* Darker text for contrast */
+}
+
+.skip-button:hover {
+    background-color: #e0a800; /* Darker hover color */
+}

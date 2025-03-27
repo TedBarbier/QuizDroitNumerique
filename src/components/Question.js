@@ -12,8 +12,13 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
         if (selectedOption !== null) {
             onAnswerSubmit(selectedOption);
         } else {
-            alert("Veuillez sélectionner une réponse.");
+            alert("Veuillez sélectionner une réponse avant de soumettre ou passer.");
         }
+    };
+
+    const handleSkipQuestion = () => {
+        onAnswerSubmit(null); // Pass null to indicate skipped question
+        setSelectedOption(null); // Reset selected option for next question
     };
 
     return (
@@ -38,7 +43,11 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                         </li>
                     ))}
                 </ul>
-                <button type="submit" disabled={selectedOption === null}>Soumettre la réponse</button>
+                <div className="question-buttons"> {/* Container for buttons */}
+                    <button type="submit" disabled={selectedOption === null}>Soumettre la réponse</button>
+                    <button type="button" className="skip-button" onClick={handleSkipQuestion}>Passer la question</button> {/* Skip button */}
+                </div>
+
                 {userAnswer !== null && ( // Show feedback if an answer has been submitted
                     <div className={selectedOption === questionData.correctAnswer ? "feedback correct" : "feedback incorrect"}>
                         {selectedOption === questionData.correctAnswer ? (
