@@ -8,7 +8,7 @@ function shuffleArray(array) {
     }
 }
 
-function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit, userAnswer }) {
+function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit, userAnswer, score }) { // Receive score prop
     const [selectedOption, setSelectedOption] = useState(userAnswer !== null ? userAnswer : null); // Initialize to userAnswer
     const [shuffledOptions, setShuffledOptions] = useState([]); // State for shuffled options
     const correctAnswerIndexRef = useRef(null); // Ref to store correct answer index
@@ -93,6 +93,7 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                         ) : (
                             <p>Incorrect. 😔 La bonne réponse est : <strong>{getCorrectAnswerFromShuffled()}</strong>. {questionData.explanation}</p>
                         )}
+                        <p className="current-score">Score actuel : {score} / {questionIndex + 1}</p> {/* Display score here */}
                     </div>
                 )}
             </form>

@@ -4,7 +4,7 @@ import Question from './components/Question';
 import Footer from './components/Footer'; // Import Footer component
 import originalQuestionsData from './questionsData'; // Import original questions data
 
-// Helper function to shuffle array in place (Fisher-Yates Shuffle) -  Move this to App.js as it's used only here now
+// Helper function to shuffle array in place (Fisher-Yates Shuffle)
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -104,6 +104,7 @@ function App() {
                         totalQuestions={shuffledQuestionsData.length} // Use shuffled length
                         onAnswerSubmit={handleAnswerSubmit}
                         userAnswer={userAnswers[currentQuestionIndex]}
+                        score={score} // Pass the score here
                     />
                 </>
             )}

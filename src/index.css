@@ -295,3 +295,10 @@ body {
   .app-footer a:hover {
       text-decoration: underline;
   }
+
+  .current-score {
+    font-weight: bold;
+    margin-top: 15px; /* Add some space above the score */
+    text-align: right; /* Align score to the right */
+    color: #007bff; /* Make the score blue to stand out */
+}
