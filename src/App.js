@@ -1,10 +1,10 @@
 import React from 'react';
+import './index.css';
 
-function PracticeExamWebsite() {
+function App() {
   return (
     <div className="exam-container">
       <h1>Partiel de Droit Informatique - Examen d'Entraînement</h1>
-
       <section className="instructions">
         <h2>Instructions:</h2>
         <ol>
