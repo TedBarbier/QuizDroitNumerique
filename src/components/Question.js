@@ -35,9 +35,12 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("handleSubmit called"); // ADDED console.log
+        console.log("selectedOption:", selectedOption); // ADDED console.log
         if (selectedOption !== null) {
             onAnswerSubmit(selectedOption); // Submit answer now in handleSubmit
             setFeedbackVisible(true); // Show feedback now in handleSubmit
+            console.log("feedbackVisible set to true"); // ADDED console.log
         } else {
             alert("Veuillez sélectionner une réponse avant de soumettre ou passer.");
         }
