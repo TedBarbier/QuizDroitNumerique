@@ -12,7 +12,7 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
     const [selectedOption, setSelectedOption] = useState(userAnswer !== null ? userAnswer : null); // Initialize to userAnswer
     const [shuffledOptions, setShuffledOptions] = useState([]); // State for shuffled options
     const correctAnswerIndexRef = useRef(null); // Ref to store correct answer index
-    const [feedbackVisible, setFeedbackVisible] = useState(userAnswer !== null); // State to control feedback visibility
+    const [feedbackVisible, setFeedbackVisible] = useState(false); // State to control feedback visibility
 
     useEffect(() => {
         setSelectedOption(null); // Reset selectedOption when questionIndex changes
@@ -30,17 +30,23 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
 
 
     const handleOptionChange = (e) => {
-        const chosenOption = e.target.value;
-        setSelectedOption(chosenOption);
-        setFeedbackVisible(true); // Show feedback immediately on option selection
-        onAnswerSubmit(chosenOption); // Submit answer immediately
+        setSelectedOption(e.target.value); // Just update selectedOption, don't show feedback yet
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (selectedOption !== null) {
+            onAnswerSubmit(selectedOption); // Submit answer now in handleSubmit
+            setFeedbackVisible(true); // Show feedback now in handleSubmit
+        } else {
+            alert("Veuillez sélectionner une réponse avant de soumettre ou passer.");
+        }
+    };
 
     const handleSkipQuestion = () => {
         onAnswerSubmit(null); // Pass null to indicate skipped question
         setSelectedOption(null); // Reset selected option
-        setFeedbackVisible(false); // Hide feedback when skipping
+        setFeedbackVisible(false); // Hide feedback when skipping (though it should already be hidden)
     };
 
 
@@ -58,7 +64,7 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
             <h3>Question {questionIndex + 1} / {totalQuestions}</h3>
             <p className="scenario">{questionData.scenario}</p>
             <p className="question-text">{questionData.question}</p>
-            <form /* No onSubmit here anymore */>
+            <form onSubmit={handleSubmit}> {/* Re-add onSubmit to form */}
                 <ul className="options-list">
                     {shuffledOptions.map((option, index) => ( // Use shuffledOptions for rendering
                         <li key={index}>
@@ -68,7 +74,7 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                                     name={`question-${questionIndex}`}
                                     value={option}
                                     checked={selectedOption === option}
-                                    onChange={handleOptionChange} /* Call handleOptionChange directly */
+                                    onChange={handleOptionChange} /* handleOptionChange only updates selectedOption */
                                 />
                                 {option}
                             </label>
@@ -76,7 +82,7 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                     ))}
                 </ul>
                 <div className="question-buttons">
-                    {/* Removed Submit Button */}
+                    <button type="submit" disabled={selectedOption === null}>Soumettre la réponse</button> {/* Re-add Submit Button */}
                     <button type="button" className="skip-button" onClick={handleSkipQuestion}>Passer la question</button>
                 </div>
 
