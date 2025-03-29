@@ -71,10 +71,10 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                             <p>Incorrect. 😔 La bonne réponse est : <strong>{getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer)}</strong>. {questionData.explanation}</p>
                         )}
                         <p className="current-score">Score actuel : {score} / {questionIndex + 1}</p>
-                        <button onClick={() => {
+                        <button className = "next-button" onClick={() => {
                             setShowResult(false);
                             onNextQuestion();
-                        }}>Next Question</button>
+                        }}>Prochaine Question</button>
                     </div>
                 )}
             </form>
