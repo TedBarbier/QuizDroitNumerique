@@ -10,6 +10,7 @@ function shuffleArray(array) {
 function getCorrectAnswerFromShuffled(shuffledOptions, correctAnswer) {
     return shuffledOptions.find(option => option === correctAnswer);
 }
+
 function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit, onNextQuestion, userAnswer, setUserAnswer, score }) {
     const [showResult, setShowResult] = useState(false);
     const [shuffledOptions, setShuffledOptions] = useState([]);
@@ -31,53 +32,33 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
     };
 
     return (
-        <div className="question-card">
-            <h3>Question {questionIndex + 1} / {totalQuestions}</h3>
-            <p className="scenario">{questionData.scenario}</p>
-            <p className="question-text">{questionData.question}</p>
-            <form onSubmit={(e) => { e.preventDefault(); handleAnswerSubmit(); }}>
-                <ul className="options-list">
+        <div>
+            <h2>Question {questionIndex + 1} of {totalQuestions}</h2>
+            <p>{questionData.question}</p>
                     {shuffledOptions.map((option, index) => (
-                        <li key={index}>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name={`question-${questionIndex}`}
-                                    value={option}
-                                    checked={userAnswer === option}
-                                    onChange={() => setUserAnswer(option)}
-                                    disabled={isSubmitted}
-                                />
-                                {option}
-                            </label>
-                        </li>
-                    ))}
-                </ul>
-                <div className="question-buttons">
-                    <button type="submit" disabled={isSubmitted}>Soumettre la réponse</button>
-                    <button type="button" className="skip-button" onClick={() => {
-                        setUserAnswer(null);
-                            setShowResult(false);
-                        onAnswerSubmit(null);
-                        setIsSubmitted(false);
-                    }}>Passer la question</button>
-                    </div>
-
+                <div key={index}>
+                    <input
+                        type="radio"
+                        id={`option-${index}`}
+                        name="answer"
+                        value={option}
+                        checked={userAnswer === option}
+                        onChange={() => setUserAnswer(option)}
+                        disabled={isSubmitted}
+                    />
+                    <label htmlFor={`option-${index}`}>{option}</label>
+                </div>
+            ))}
+            <button onClick={handleAnswerSubmit} disabled={isSubmitted}>Submit Answer</button>
                 {showResult && (
-                    <div className={userAnswer === getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer) ? "feedback correct" : "feedback incorrect"}>
-                        {userAnswer === getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer) ? (
-                            <p>Correct ! 🎉 {questionData.explanation}</p>
-                        ) : (
-                            <p>Incorrect. 😔 La bonne réponse est : <strong>{getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer)}</strong>. {questionData.explanation}</p>
-                        )}
-                        <p className="current-score">Score actuel : {score} / {questionIndex + 1}</p>
-                        <button onClick={() => {
+                <div>
+                    <p>{userAnswer === getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer) ? 'Correct!' : 'Incorrect!'}</p>
+                    <button className="next-button" onClick={() => {
                             setShowResult(false);
                             onNextQuestion();
                         }}>Next Question</button>
                     </div>
                 )}
-            </form>
         </div>
     );
 }
