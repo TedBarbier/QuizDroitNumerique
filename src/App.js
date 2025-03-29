@@ -14,42 +14,22 @@ function App() {
     const [shuffledQuestionsData, setShuffledQuestionsData] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
-    const [showResults, setShowResults] = useState(false);
-    const [userAnswers, setUserAnswers] = useState(Array(originalQuestionsData.length).fill(null));
-
+    const [userAnswer, setUserAnswer] = useState(null);
     useEffect(() => {
         const questionsCopy = [...originalQuestionsData];
         shuffleArray(questionsCopy);
         setShuffledQuestionsData(questionsCopy);
     }, []);
 
-    const currentQuestion = shuffledQuestionsData[currentQuestionIndex];
-
-    const handleAnswerSubmit = (selectedAnswer) => {
-        const updatedUserAnswers = [...userAnswers];
-        updatedUserAnswers[currentQuestionIndex] = selectedAnswer;
-        setUserAnswers(updatedUserAnswers);
-
-        if (selectedAnswer === currentQuestion.correctAnswer) {
+    const handleAnswerSubmit = (isCorrect) => {
+        if (isCorrect) {
             setScore(score + 1);
-        }
-
-        if (currentQuestionIndex < shuffledQuestionsData.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex + 1);
-        } else {
-            setShowResults(true);
         }
     };
 
-    const handleRestartQuiz = () => {
-        const questionsCopy = [...originalQuestionsData];
-        shuffleArray(questionsCopy);
-        setShuffledQuestionsData(questionsCopy);
-
-        setCurrentQuestionIndex(0);
-        setScore(0);
-        setShowResults(false);
-        setUserAnswers(Array(originalQuestionsData.length).fill(null));
+    const handleNextQuestion = () => {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setUserAnswer(null);
     };
 
     if (!shuffledQuestionsData || shuffledQuestionsData.length === 0) {
@@ -60,30 +40,7 @@ function App() {
         <div className="app">
             <h1>Droit du Numérique - Partiel d'Entraînement</h1>
 
-            {showResults ? (
-                <div className="results">
-                    <h2>Résultats du Quiz</h2>
-                    <p>Votre Score : {score} sur {shuffledQuestionsData.length}</p>
-                    <div className="results-review">
-                        {shuffledQuestionsData.map((question, index) => (
-                            <div key={index} className="result-question-card">
-                                <h3>Question {index + 1}</h3>
-                                <p className="scenario">{question.scenario}</p>
-                                <p className="question-text">{question.question}</p>
-                                <p>Votre réponse: <strong>{userAnswers[index] || "Non répondu"}</strong></p>
-                                <p>Réponse correcte: <strong>{question.correctAnswer}</strong></p>
-                                <p className="explanation">Explication: {question.explanation}</p>
-                                {userAnswers[index] === question.correctAnswer ? (
-                                    <p className="result-feedback correct">Correct 🎉</p>
-                                ) : (
-                                    <p className="result-feedback incorrect">Incorrect 😔</p>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                    <button onClick={handleRestartQuiz}>Recommencer le Quiz</button>
-                </div>
-            ) : (
+            {currentQuestionIndex < shuffledQuestionsData.length ? (
                 <>
                     <p className="scenario-intro">
                         Bienvenue au partiel d'entraînement en Droit du Numérique d'Innovatech Solutions ! <br/>
@@ -91,14 +48,28 @@ function App() {
                         Répondez aux questions pour tester vos connaissances en "Droit du Numérique" et aider Innovatech à relever ces défis !
                     </p>
                     <Question
-                        questionData={currentQuestion}
+                        questionData={shuffledQuestionsData[currentQuestionIndex]}
                         questionIndex={currentQuestionIndex}
                         totalQuestions={shuffledQuestionsData.length}
                         onAnswerSubmit={handleAnswerSubmit}
-                        userAnswer={userAnswers[currentQuestionIndex]}
+                        onNextQuestion={handleNextQuestion}
+                        userAnswer={userAnswer}
                         score={score}
                     />
                 </>
+            ) : (
+                <div className="results">
+                    <h2>Quiz Completed!</h2>
+                    <p>Your score: {score} / {shuffledQuestionsData.length}</p>
+                    <button onClick={() => {
+                        const questionsCopy = [...originalQuestionsData];
+                        shuffleArray(questionsCopy);
+                        setShuffledQuestionsData(questionsCopy);
+                        setCurrentQuestionIndex(0);
+                        setScore(0);
+                        setUserAnswer(null);
+                    }}>Recommencer le Quiz</button>
+                </div>
             )}
             <Footer />
         </div>

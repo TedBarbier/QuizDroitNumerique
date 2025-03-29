@@ -7,15 +7,15 @@ function shuffleArray(array) {
     }
 }
 
-function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit, userAnswer, score }) {
+function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit, onNextQuestion, userAnswer, score }) {
     const [selectedOption, setSelectedOption] = useState(userAnswer !== null ? userAnswer : null);
     const [shuffledOptions, setShuffledOptions] = useState([]);
     const correctAnswerIndexRef = useRef(null);
-    const [feedbackVisible, setFeedbackVisible] = useState(false);
+    const [showResult, setShowResult] = useState(false);
 
     useEffect(() => {
         setSelectedOption(null);
-        setFeedbackVisible(false);
+        setShowResult(false);
         const optionsCopy = [...questionData.options];
         shuffleArray(optionsCopy);
         setShuffledOptions(optionsCopy);
@@ -31,13 +31,13 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
     const handleAnswerSubmit = () => {
         const isCorrect = selectedOption === questionData.correctAnswer;
         onAnswerSubmit(isCorrect);
-        setFeedbackVisible(true);
+        setShowResult(true);
     };
 
     const handleSkipQuestion = () => {
         onAnswerSubmit(null);
         setSelectedOption(null);
-        setFeedbackVisible(false);
+        setShowResult(false);
     };
 
     const getCorrectAnswerFromShuffled = () => {
@@ -74,7 +74,7 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                     <button type="button" className="skip-button" onClick={handleSkipQuestion}>Passer la question</button>
                 </div>
 
-                {feedbackVisible && (
+                {showResult && (
                     <div className={selectedOption === getCorrectAnswerFromShuffled() ? "feedback correct" : "feedback incorrect"}>
                         {selectedOption === getCorrectAnswerFromShuffled() ? (
                             <p>Correct ! 🎉 {questionData.explanation}</p>
@@ -82,6 +82,10 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                             <p>Incorrect. 😔 La bonne réponse est : <strong>{getCorrectAnswerFromShuffled()}</strong>. {questionData.explanation}</p>
                         )}
                         <p className="current-score">Score actuel : {score} / {questionIndex + 1}</p>
+                        <button onClick={() => {
+                            setShowResult(false);
+                            onNextQuestion();
+                        }}>Next Question</button>
                     </div>
                 )}
             </form>
