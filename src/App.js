@@ -15,6 +15,7 @@ function App() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
     const [userAnswer, setUserAnswer] = useState(null);
+
     useEffect(() => {
         const questionsCopy = [...originalQuestionsData];
         shuffleArray(questionsCopy);
@@ -54,6 +55,7 @@ function App() {
                         onAnswerSubmit={handleAnswerSubmit}
                         onNextQuestion={handleNextQuestion}
                         userAnswer={userAnswer}
+                        setUserAnswer={setUserAnswer}
                         score={score}
                     />
                 </>

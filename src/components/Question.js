@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -7,44 +7,27 @@ function shuffleArray(array) {
     }
 }
 
-function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit, onNextQuestion, userAnswer, score }) {
-    const [selectedOption, setSelectedOption] = useState(userAnswer !== null ? userAnswer : null);
-    const [shuffledOptions, setShuffledOptions] = useState([]);
-    const correctAnswerIndexRef = useRef(null);
+function getCorrectAnswerFromShuffled(shuffledOptions, correctAnswer) {
+    return shuffledOptions.find(option => option === correctAnswer);
+}
+function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit, onNextQuestion, userAnswer, setUserAnswer, score }) {
     const [showResult, setShowResult] = useState(false);
+    const [shuffledOptions, setShuffledOptions] = useState([]);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     useEffect(() => {
-        setSelectedOption(null);
-        setShowResult(false);
-        const optionsCopy = [...questionData.options];
-        shuffleArray(optionsCopy);
-        setShuffledOptions(optionsCopy);
-
-        correctAnswerIndexRef.current = questionData.options.indexOf(questionData.correctAnswer);
-
-    }, [questionIndex, questionData.options, questionData.correctAnswer]);
-
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value);
-    };
+        const options = [...questionData.options];
+        shuffleArray(options);
+        setShuffledOptions(options);
+        setIsSubmitted(false);
+    }, [questionData]);
 
     const handleAnswerSubmit = () => {
-        const isCorrect = selectedOption === questionData.correctAnswer;
+        const correctAnswer = getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer);
+        const isCorrect = userAnswer === correctAnswer;
         onAnswerSubmit(isCorrect);
         setShowResult(true);
-    };
-
-    const handleSkipQuestion = () => {
-        onAnswerSubmit(null);
-        setSelectedOption(null);
-        setShowResult(false);
-    };
-
-    const getCorrectAnswerFromShuffled = () => {
-        if (correctAnswerIndexRef.current !== null) {
-            return shuffledOptions[correctAnswerIndexRef.current];
-        }
-        return questionData.correctAnswer;
+        setIsSubmitted(true);
     };
 
     return (
@@ -61,8 +44,9 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                                     type="radio"
                                     name={`question-${questionIndex}`}
                                     value={option}
-                                    checked={selectedOption === option}
-                                    onChange={handleOptionChange}
+                                    checked={userAnswer === option}
+                                    onChange={() => setUserAnswer(option)}
+                                    disabled={isSubmitted}
                                 />
                                 {option}
                             </label>
@@ -70,16 +54,21 @@ function Question({ questionData, questionIndex, totalQuestions, onAnswerSubmit,
                     ))}
                 </ul>
                 <div className="question-buttons">
-                    <button type="submit" disabled={selectedOption === null}>Soumettre la réponse</button>
-                    <button type="button" className="skip-button" onClick={handleSkipQuestion}>Passer la question</button>
-                </div>
+                    <button type="submit" disabled={isSubmitted}>Soumettre la réponse</button>
+                    <button type="button" className="skip-button" onClick={() => {
+                        setUserAnswer(null);
+                            setShowResult(false);
+                        onAnswerSubmit(null);
+                        setIsSubmitted(false);
+                    }}>Passer la question</button>
+                    </div>
 
                 {showResult && (
-                    <div className={selectedOption === getCorrectAnswerFromShuffled() ? "feedback correct" : "feedback incorrect"}>
-                        {selectedOption === getCorrectAnswerFromShuffled() ? (
+                    <div className={userAnswer === getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer) ? "feedback correct" : "feedback incorrect"}>
+                        {userAnswer === getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer) ? (
                             <p>Correct ! 🎉 {questionData.explanation}</p>
                         ) : (
-                            <p>Incorrect. 😔 La bonne réponse est : <strong>{getCorrectAnswerFromShuffled()}</strong>. {questionData.explanation}</p>
+                            <p>Incorrect. 😔 La bonne réponse est : <strong>{getCorrectAnswerFromShuffled(shuffledOptions, questionData.correctAnswer)}</strong>. {questionData.explanation}</p>
                         )}
                         <p className="current-score">Score actuel : {score} / {questionIndex + 1}</p>
                         <button onClick={() => {
